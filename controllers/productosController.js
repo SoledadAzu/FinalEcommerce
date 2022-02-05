@@ -1,17 +1,20 @@
 const db = require('../database/models');
 const Sequelize = require('sequelize');
 const { log } = require('debug');
-const op = db.Sequelize.Op;
+const Op = db.Sequelize.Op;
 
 module.exports = {
     detalle: function (req,res) {
         let id = req.params.id;
+       
         db.Producto.findByPk(id, {
            include: [{all: true, nested: true}]
         })
         .then(function (unProducto) {
             res.render('detalle',{ unProducto: unProducto, title: unProducto.nombre })
+           
         })
+        .catch(error=>console.log(error))
     },
 
     porCategoria: function (req,res) {
@@ -30,30 +33,21 @@ module.exports = {
     },
 
     buscar: function (req,res) {
-        let busqueda = req.query.busqueda;
-        db.Producto.findAll({
-            where:
-                {
-                    [op.or]: [
-                            {
-                                nombre: {
-                                    [op.like]: `%${busqueda}%`
-                                }
-                            },
-                            {
-                                marca: {
-                                [op.like]: `%${busqueda}%`
-
-                                }
-                            }
-                   ]
-
+           let searchString = req.query.busqueda;
+            db.Producto.findAll({
+                where: {
+                    nombre: {
+                        [Op.substring]: searchString,
+                    }
                 }
-            
-        })
-        .then(function (resultados) {
-            res.render('resultadoBusqueda', { title: busqueda , resultados: resultados});
-        })
+            })  
+            .then(function (resultados) {
+                
+                res.render('resultadoBusqueda', { resultados: resultados,busqueda:searchString })
+            })  
+            .catch(error=>console.log(error)) 
+       
+      
     },
 
     agregarComentario: function (req,res) {
@@ -85,17 +79,24 @@ module.exports = {
         if (req.session.usuarioLogueado == undefined) {
             res.redirect("/");
         }
-        db.Producto.create({
-            nombre: req.body.nombre,
-            marca: req.body.marca,
-            precio: req.body.precio,
-            categoria_id: req.body.categoria,
-            img_url: req.body.imagen
-        })
-        .then(function (resultado) {
-            res.redirect('/productos/detalle/'+ resultado.id)
-        })
-
+            let idUsuario = req.session.usuarioLogueado.id;
+            
+            
+    
+            db.Producto.create({
+                nombre: req.body.nombre,
+                marca: req.body.marca,
+                precio: +req.body.precio,
+                img_url: req.body.imagen,
+                categoria_id: +req.body.categoria,
+                usuario_id: +idUsuario
+            })
+            .then(function (creado) {
+                res.redirect('/')
+                
+            })
+            .catch(error=>console.log(error))
+   
     },
 
     misProductos: function (req, res) {
