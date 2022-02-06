@@ -9,6 +9,7 @@ body {
 a {
   color: #00B7FF;
 }
+
 header, header nav{
   height: 100px;
 }
@@ -17,14 +18,41 @@ header img.logo{
     width: 50px;
 }
 
-
+.buscadorr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buscadorSmall{
+  position: relative;
+  left: 50px;
+}
 /* detalle de producto */
-
+.uk-flex-middle {
+  align-items: baseline;
+}
 .body-detalle{
+  color: #65F;
 
 }
 
 .body-detalle img.imagen-producto{
-  width: 40%;
+  width: 100%;
 
+}
+
+.iconEye{
+  position: absolute;
+   right:0px;
+  top:2% ;
+  transform:translateY(-50);
+  cursor:pointer;
+  transition: .1s ease all ;
+  
+  
+  
+}
+.iconEye:hover{
+  color: rgb(18, 18, 19);
+     
 }

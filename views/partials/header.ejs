@@ -35,15 +35,13 @@
                 <% }else{ %>
                     <li><a href="/usuario/login" target="_blank">Log In</a></li>
                 <% } %>
-                <li>
-                    <form action="/productos/buscar" method="GET">
-                        <div class="">
-                            <div class="uk-inline">
-                                <a class="uk-form-icon" href="#" uk-icon="icon: search"></a>
-                                <input class="uk-input" type="text" placeholder="Buscar productos..." name="busqueda">
-                            </div>
-                        </div>
+                <li class="buscadorr">
+
+                    <form id="formBuscador" action="/productos/buscar"  method="GET">
+                        <p id="buscadorSmall" class="buscadorSmall"></p> 
+                        <input id="Buscador" type="text" name="keywords" placeholder="Buscar productos... "></i>
                     </form>
+                    
                 </li>
             </ul>
         
