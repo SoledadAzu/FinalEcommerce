@@ -1,4 +1,4 @@
-
+console.log("esta ok")
 const $formBuscador=document.getElementById('formBuscador')
 const $buscador=document.getElementById('Buscador')
 const $buscadorSmall=document.getElementById('buscadorSmall')

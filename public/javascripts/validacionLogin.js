@@ -1,9 +1,9 @@
 
-const $nombre=document.querySelector('nombre')
-const $errorN=document.querySelector('errorN')
-const $password=d.querySelector("password")
-const $errorP=d.querySelector('errorP')
-const iconEye=d.querySelector('iconEye')
+const $nombre=document.querySelector('#nombre')
+const $errorN=document.querySelector('#errorN')
+const $password=document.querySelector("#password")
+const $errorP=document.querySelector('#errorP')
+/*const icono=document.querySelector('#icono')*/
 
 
 const validate ={
@@ -18,21 +18,21 @@ $nombre.addEventListener("keyup",e=>{
 
     if(validate.test(e.target.value)){
         
-        $nombre.classList.add("is-valid")
-        $nombre.classList.remove("is-invalid")
+        $nombre.classList.add("correcto")
+        $nombre.classList.remove("error")
         $errorN.innerHTML=""
         validate.nombre= true
 
  
     }else if(e.target.value==""){
-        $nombre.classList.remove("is-valid")
-        $nombre.classList.add("is-invalid")
+        $nombre.classList.remove("correcto")
+        $nombre.classList.add("error")
         $errorN.innerHTML = "Este campo no puede estar vacio"
        
 
      }else{
-        $nombre.classList.add("is-invalid")
-        $nombre.classList.remove("is-valid")
+        $nombre.classList.add("error")
+        $nombre.classList.remove("correcto")
         $errorN.innerHTML='Nombre invalido'
         validate.nombre=false
         
@@ -41,7 +41,7 @@ $nombre.addEventListener("keyup",e=>{
 
     }
 
-    funcValidate(validate)
+   /* funcValidate(validate)*/
     
 })
 
@@ -73,32 +73,22 @@ $password.addEventListener("keyup",e=>{
 
     }
 
-    funcValidate(validate)
+   /* funcValidate(validate)*/
+    /*valida los campos*/
     
 })
 
-formulario.addEventListener("submit", e =>{
-    /*e.preventDefault()*/
 
-})
-
-
-
-iconEye.addEventListener("click", function () {
+/*icono.addEventListener("click", function () {
     const icon = this.querySelector("i");
 
     if(this.nextElementSibling.type === "password"){
         this.nextElementSibling.type = "text";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
+        icono.classList.remove("icon: lock");
+        icono.classList.add("");
     } else {
         this.nextElementSibling.type = "password";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
+        icono.classList.remove("");
+        icono.classList.add("icon: lock");
     };
-});
-
-
-
-
-/*<input class="uk-input" type="text" placeholder="Nombre de usuario | Email" name="nombre"> */
+})*/

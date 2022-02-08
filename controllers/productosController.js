@@ -33,7 +33,8 @@ module.exports = {
     },
 
     buscar: function (req,res) {
-           let searchString = req.query.busqueda;
+           let searchString = req.query.keywords;
+           console.log(searchString)
             db.Producto.findAll({
                 where: {
                     nombre: {

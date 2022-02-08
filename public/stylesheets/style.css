@@ -41,18 +41,19 @@ header img.logo{
 
 }
 
-.iconEye{
-  position: absolute;
-   right:0px;
-  top:2% ;
-  transform:translateY(-50);
-  cursor:pointer;
-  transition: .1s ease all ;
-  
-  
-  
-}
+
+
 .iconEye:hover{
-  color: rgb(18, 18, 19);
+  color: rgb(95, 163, 5);
      
+}
+
+.error{
+  color:red
+}
+.correcto{
+  color:green
+}
+.uk-inline{
+  
 }
